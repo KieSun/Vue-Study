@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+    <!--只能更新一次-->
+    <span v-once>Message: {{ msg }} </span>
+    <div v-html="rawHtml">
+        
+    </div>
+    <button v-bind:disabled="someDynamicCondition">Button</button>
+    <!--只能单表达式-->
+    <div id="div1">
+        {{ msg + 1 }}
+    </div>
+    <a v-bind:herf="url">1</a>
+    <script>
+        var span = new Vue({
+            el: 'span',
+            data () {
+                return {
+                    msg: 'yck'
+                }
+            }
+        })
+        new Vue({
+            el: 'button',
+            data () {
+                return {
+                    someDynamicCondition: false
+                }
+            }  
+        })
+        new Vue({
+            el: '#div1',
+            data () {
+                return {
+                    msg: 1
+                }
+            }  
+        })
+        new Vue({
+            el: 'a',
+            data () {
+                return {
+                    url: 'baidu.com'
+                }
+            }
+        })
+    </script>
+</body>
+</html>
