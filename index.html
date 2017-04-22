@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+    <!--<div id="app-3">
+        <p v-if="seen">See</p>
+    </div>
+    <div id="app-4">
+        <ol>
+            <todo-item></todo-item>
+        </ol>
+    </div>
+    <div id="app-5">
+        <p>{{ message }}</p>
+        <button v-on:click="handle">Reverse Message</button>
+    </div>
+    <div id="app-6">
+        <p>{{ message }}</p>
+        <input v-model="message">
+    </div>-->
+
+    <div id="app-7">
+        <ol>
+            <todo-item v-for="item in list" v-bind:todo="item"></todo-item>
+        </ol>
+    </div>
+
+    <script>
+        // var app = new Vue({
+        //     el: '#app-3',
+        //     data: {
+        //         seen: true
+        //     }
+        // })
+        // var app3 = new Vue({
+        //   el: '#app-5',
+        //   data: {
+        //       message: 'Vue!'
+        //   },
+        //   methods: {
+        //       handle: function () { 
+        //           console.log(this.message)
+        //           this.message = this.message.split('').reverse().join('')
+        //        }
+        //   }  
+        // })
+        // var app4 = new Vue({
+        //     el: '#app-6',
+        //     data: {
+        //         message: 'Hello Vue'
+        //     }
+        // })
+
+        Vue.component('todo-item', {
+            props: ['todo'],
+            template: '<li>{{ todo.text }}</li>'
+        })
+
+        var app7 = new Vue({
+            el: '#app-7',
+            data: {
+                list: [
+                    { text: 'Vegetables' },
+                    { text: 'Vegetables2' },
+                    { text: 'Vegetables1' }
+                ]
+            }
+        })
+    </script>
+</body>
+
+</html>
