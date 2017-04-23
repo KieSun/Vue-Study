@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+    <h1 v-if="ok">Yes</h1>
+    <h1 v-else>No</h1>
+    <div v-if="loginType === 'username'">
+        <label>Username</label>
+        <input placeholder="Enter your username">
+    </div>
+    <div v-else>
+        <label>Email</label>
+        <input placeholder="Enter your email address">
+    </div>
+    <script>
+        var vm = new Vue({
+            el: 'h1',
+            data() {
+                return {
+                    ok: true
+                }
+            }
+        })
+        var vm1 = new Vue({
+            el: 'div',
+            data () {
+                return {
+                    loginType: 'username'
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
