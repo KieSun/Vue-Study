@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+
+    <div class="todo">
+        <input 
+            v-model="newTodoText"
+            v-on:keyup.enter="handle"
+            placeholder="Add a todo"
+        >
+        <ul>
+            <todo-item
+                v-for="(todo,index) in todos"
+                v-bind:key="todo"
+                v-bind:name="todo"
+                v-on:remove="todos.splice(index, 1)"
+            ></todo-item>
+        </ul>
+    </div>
+
+
+
+    <ul class="example">
+        <li v-for="(item,index) in items">
+            {{ item.msg }}
+        </li>
+    </ul>
+    <ul id="repeat-object" class="demo">
+        <li v-for="value in object">
+            {{ value }}
+        </li>
+    </ul>
+    <script>
+
+        Vue.component('todo-item', {
+            template: `
+                <li>
+                    {{name}}
+                    <button v-on:click="$emit('remove')">X</button>
+                </li>
+                `,
+                props: ['name']
+        })
+
+        new Vue({
+            el: '.todo',
+            data () {
+                return {
+                    newTodoText: '',
+                    todos: [
+                        'Do the dishes1',
+                        'Do the dishes2',
+                        'Do the dishes3',
+                    ]
+                }
+            },
+            methods: {
+                handle: function() {
+                    this.todos.push(this.newTodoText)
+                    this.newTodoText = ''
+                }
+            }
+        })
+
+
+
+
+        var e1 = new Vue({
+            el: '.example',
+            data() {
+                return {
+                    items: [{
+                            msg: 'y'
+                        },
+                        {
+                            msg: 'c'
+                        },
+                        {
+                            msg: 'k'
+                        }
+                    ]
+                }
+            }
+        })
+        new Vue({
+            el: '.demo',
+            data () {
+                return {
+                    object: {
+                        y: 'y',
+                        c: 'c',
+                        k: 'k'
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
