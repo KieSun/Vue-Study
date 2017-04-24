@@ -13,7 +13,11 @@
         </div>
         <ol class="todos">
             <li v-for="(todo,index) in todoList">
-                {{ todo.title }}
+                <input type="checkbox" v-model="todo.done">{{ todo.title }}
+                <span v-if="todo.done">已完成</span>
+                <span v-else>未完成</span>
+                <span >{{ todo.createdAt }}</span>
+                <span v-on:click="removeTodo(todo)">X</span>
             </li>
         </ol>
     </div>

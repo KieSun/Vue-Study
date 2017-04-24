@@ -9416,6 +9416,25 @@ var app = new _vue2.default({
         };
     },
 
+    created: function created() {
+        var _this = this;
+
+        // 窗口即将被卸载
+        window.onbeforeunload = function () {
+            var dataString = JSON.stringify(_this.todoList);
+            window.localStorage.setItem('myTodos', dataString);
+            var newTodo = JSON.stringify(_this.newTodo);
+            window.localStorage.setItem('newTodo', newTodo);
+        };
+
+        var oldDataString = window.localStorage.getItem('myTodos');
+        var oldData = JSON.parse(oldDataString);
+        this.todoList = oldData || [];
+
+        var oldnewTodo = window.localStorage.getItem('newTodo');
+        var oldnewData = JSON.parse(oldnewTodo);
+        this.newTodo = oldnewData || '';
+    },
     methods: {
         addTodo: function addTodo() {
             if (!this.newTodo) {
@@ -9423,10 +9442,16 @@ var app = new _vue2.default({
             }
             this.todoList.push({
                 title: this.newTodo,
-                createdAt: new Date()
+                createdAt: new Date(),
+                done: false
             });
             this.newTodo = '';
             console.log(this.todoList);
+        },
+        removeTodo: function removeTodo(todo) {
+            var index = this.todoList.indexOf(todo);
+            this.todoList.pop();
+            this.todoList.splice(index, 1);
         }
     }
 });
