@@ -9418,6 +9418,9 @@ var app = new _vue2.default({
 
     methods: {
         addTodo: function addTodo() {
+            if (!this.newTodo) {
+                return;
+            }
             this.todoList.push({
                 title: this.newTodo,
                 createdAt: new Date()

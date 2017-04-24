@@ -12,7 +12,9 @@
             <input type="text" v-model="newTodo" v-on:keypress.enter="addTodo">
         </div>
         <ol class="todos">
-
+            <li v-for="(todo,index) in todoList">
+                {{ todo.title }}
+            </li>
         </ol>
     </div>
     <script src="bundle.js"></script>

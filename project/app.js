@@ -10,6 +10,7 @@ var app = new Vue({
     },
     methods: {
         addTodo: function() {
+            if (!this.newTodo) { return }
             this.todoList.push({
                 title: this.newTodo,
                 createdAt: new Date()
