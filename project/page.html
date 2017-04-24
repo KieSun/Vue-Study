@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
 <body>
     <div id="app">
         <div class="newTask">
@@ -16,11 +18,11 @@
                 <input type="checkbox" v-model="todo.done">{{ todo.title }}
                 <span v-if="todo.done">已完成</span>
                 <span v-else>未完成</span>
-                <span >{{ todo.createdAt }}</span>
+                <span>{{ todo.createdAt }}</span>
                 <span v-on:click="removeTodo(todo)">X</span>
             </li>
         </ol>
     </div>
-    <script src="bundle.js"></script>
 </body>
+
 </html>
